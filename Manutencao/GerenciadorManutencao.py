@@ -47,11 +47,11 @@ class MainWindow(tk.Toplevel):
 
         mainWindow['padding'] = 10
         mainWindow['takefocus'] = False
-
-        self.__DB = sql.connect(get_secret("DB_HOST"),
-                                get_secret("DB_USER"),
-                                get_secret("DB_PW"),
-                                get_secret("DB_SCHEMA"))
+        print(get_secret("DB_HOST"))
+        self.__DB = sql.connect(host=get_secret("DB_HOST"),
+                                user=get_secret("DB_USER"),
+                                password=get_secret("DB_PW"),
+                                database=get_secret("DB_SCHEMA"))
 
         self.__cc = ControleChamadas(self, self.DB)
         self.__cv = ControleVisitas(self, self.DB)

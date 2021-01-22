@@ -4,6 +4,7 @@ Created on 25 de jun de 2018
 @author: GYN-CPD-PEDRO
 """
 
+import os
 import tkinter as tk
 import tkinter.ttk as ttk
 
@@ -127,7 +128,6 @@ class popUP(tk.Toplevel):
 
             dados = dicDados
 
-
         elif self.__instance == 'CP':
             self.tree['columns'] = ('0', '1', '2', '3', '4', '5')
             self.tree.column('#0', width=10)
@@ -178,7 +178,7 @@ class popUP(tk.Toplevel):
 
             tmp = []
             for ci in dados:
-                doc = Document(path + ci)
+                doc = Document(os.path.abspath(os.path.join(path, ci)))
                 tmp.append([ci, doc.tables[0].cell(1, 4).text, doc.tables[0].cell(2, 1).text])
 
             dados = tmp
